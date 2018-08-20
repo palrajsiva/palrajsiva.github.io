@@ -237,7 +237,7 @@ background: none;
 	font-weight:400;
 }
 .skills{
-    width: 500px;
+    width: 80%;
 }
 
 .logo {
@@ -1142,15 +1142,16 @@ footer {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 #box {
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px;
     padding: 20px; 
-    width: 1000px;
+    width: 800px;
     height: 100px; 
-    background-color: White;   
+    background-color: White;
+    color: Black;   
 }th {
-    text-align: left;
+    text-align: center;
 }
 th, td {
-    padding: 10px;
+    padding: 20px;
 }
