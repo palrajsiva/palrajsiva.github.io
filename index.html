@@ -4,354 +4,392 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Palraj S — Magento 2 / Adobe Commerce Developer</title>
-<meta name="description" content="Magento 2 / Adobe Commerce developer with 7+ years of experience building ecommerce stores for international clients. Custom modules, API integrations, performance optimization.">
+<meta name="description" content="Magento 2 and Adobe Commerce developer based in Madurai, India, working on the platform since 2019. Custom modules, theme development, payment and shipping integrations, performance optimization for international clients.">
+<meta name="author" content="Palraj S">
+<meta property="og:title" content="Palraj S — Magento 2 / Adobe Commerce Developer">
+<meta property="og:description" content="Building and optimizing Magento 2 stores for international clients since 2019.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23f26322'/><text x='50' y='71' font-size='58' font-family='Helvetica,Arial' font-weight='bold' fill='%23fff' text-anchor='middle'>P</text></svg>">
 
 <style>
-  :root {
-    --bg: #ffffff;
-    --surface: #f7f7f8;
-    --text: #1a1d21;
-    --muted: #5c6570;
-    --line: #e3e6ea;
-    --accent: #d1541f;
-    --maxw: 780px;
+:root{
+  --bg:#ffffff;
+  --shell:#f5f5f7;
+  --ink:#1b1d1f;
+  --soft:#6b7177;
+  --line:#e1e3e6;
+  --brand:#f26322;
+  --brand-ink:#c94a12;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --maxw:1160px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#131619;--shell:#0d0f11;--ink:#e8eaec;--soft:#939aa1;--line:#262b30;
+    --brand:#ff7a3d;--brand-ink:#ff9463;
   }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--shell);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14171a;
-      --surface: #1c2024;
-      --text: #e8eaed;
-      --muted: #9aa4af;
-      --line: #2a2f35;
-      --accent: #f07a45;
-    }
-  }
+/* ══ header ══ */
+.topbar{background:var(--ink);color:var(--bg);font-size:.75rem;letter-spacing:.03em}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding-block:7px;flex-wrap:wrap}
+.store-head{background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.store-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em;font-size:1.1rem}
+.logo i{width:29px;height:29px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-style:normal;font-size:.92rem;font-weight:800}
+.head-links{display:flex;gap:22px;font-size:.86rem;color:var(--soft)}
+.head-links a{text-decoration:none;color:inherit}
+.head-links a:hover{color:var(--brand)}
+@media(max-width:760px){.head-links{display:none}}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+.crumb{background:var(--bg);border-bottom:1px solid var(--line);font-size:.77rem;color:var(--soft)}
+.crumb .wrap{padding-block:10px}
+.crumb b{color:var(--ink);font-weight:600}
+.crumb span{margin:0 8px;opacity:.5}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
+/* ══ product header ══ */
+.pdp{background:var(--bg)}
+.pdp-grid{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:52px;padding:44px 0 52px}
+@media(max-width:900px){.pdp-grid{grid-template-columns:1fr;gap:30px;padding:28px 0 36px}}
 
-  .wrap {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+.gallery{position:relative}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);border-radius:12px;display:block}
+.badge{
+  position:absolute;top:14px;left:14px;background:var(--brand);color:#fff;
+  font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 11px;border-radius:5px;
+}
+.thumbs{display:flex;gap:10px;margin-top:12px}
+.thumb{
+  flex:1;aspect-ratio:1/1;border:1px solid var(--line);border-radius:8px;
+  display:grid;place-items:center;font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.1em;color:var(--soft);text-align:center;line-height:1.35;padding:4px;
+}
+.thumb.sel{border-color:var(--brand);color:var(--brand)}
 
-  /* ---------- header ---------- */
-  header {
-    padding: 72px 0 44px;
-    border-bottom: 1px solid var(--line);
-  }
+.sku{font-family:var(--mono);font-size:.71rem;letter-spacing:.13em;color:var(--soft);margin-bottom:9px}
+h1{font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.12;letter-spacing:-.035em;font-weight:800;margin-bottom:8px}
+.subtitle{font-size:1.04rem;color:var(--brand);font-weight:650;margin-bottom:20px}
 
-  h1 {
-    font-size: 2.1rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
+.price-box{border-block:1px solid var(--line);padding:18px 0;margin-bottom:20px}
+.price{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.price small{font-size:.93rem;font-weight:500;color:var(--soft);letter-spacing:0}
+.price-note{font-size:.83rem;color:var(--soft);margin-top:5px}
 
-  .role {
-    font-size: 1.1rem;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
+.attrs{list-style:none;margin-bottom:24px;display:grid;gap:9px}
+.attrs li{display:flex;gap:10px;font-size:.93rem;color:var(--soft)}
+.attrs li::before{content:"✓";color:var(--brand);font-weight:800;flex-shrink:0}
 
-  .meta {
-    color: var(--muted);
-    font-size: 0.94rem;
-  }
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 25px;border-radius:8px;font-weight:700;font-size:.94rem;
+  text-decoration:none;border:1.5px solid transparent;transition:.16s;
+}
+.btn-add{background:var(--brand);color:#fff;flex:1;min-width:200px}
+.btn-add:hover{background:var(--brand-ink)}
+.btn-out{border-color:var(--line);color:var(--ink);background:var(--bg)}
+.btn-out:hover{border-color:var(--brand);color:var(--brand)}
 
-  .meta span + span::before {
-    content: "·";
-    margin: 0 9px;
-    opacity: 0.5;
-  }
+/* ══ sections ══ */
+section{background:var(--bg);border-top:1px solid var(--line);padding:46px 0}
+section:nth-of-type(even){background:var(--shell)}
+.sec-title{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brand);font-weight:700;margin-bottom:8px;
+}
+h2{font-size:1.45rem;letter-spacing:-.028em;font-weight:750;margin-bottom:20px}
+.lead{color:var(--soft);max-width:68ch}
+.lead p + p{margin-top:12px}
 
-  /* ---------- sections ---------- */
-  section { padding: 44px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
+/* capabilities */
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0 40px}
+.feat div{padding:16px 0;border-bottom:1px solid var(--line)}
+.feat h3{font-size:1rem;font-weight:680;margin-bottom:4px;letter-spacing:-.015em}
+.feat p{font-size:.9rem;color:var(--soft);line-height:1.6}
 
-  h2 {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.11em;
-    color: var(--muted);
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
+/* spec table */
+table{width:100%;border-collapse:collapse;font-size:.93rem;max-width:900px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{
+  width:185px;font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--soft);font-weight:600;
+}
+section:nth-of-type(even) th{background:var(--bg)}
+section:nth-of-type(odd) th{background:var(--shell)}
+@media(max-width:620px){
+  th{width:auto;display:block;border-bottom:none;padding-bottom:3px}
+  td{display:block;padding-top:0}
+}
 
-  p + p { margin-top: 14px; }
+/* history */
+.hist{max-width:860px}
+.hist-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:3px}
+.hist-title{font-size:1.18rem;font-weight:750;letter-spacing:-.025em}
+.hist-date{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--brand)}
+.hist-co{color:var(--soft);font-size:.92rem;margin-bottom:16px}
+.hist ol{list-style:none;counter-reset:h}
+.hist li{
+  counter-increment:h;position:relative;padding:11px 0 11px 40px;
+  border-bottom:1px solid var(--line);font-size:.94rem;color:var(--soft);
+}
+.hist li::before{
+  content:counter(h,decimal-leading-zero);position:absolute;left:0;top:11px;
+  font-family:var(--mono);font-size:.69rem;color:var(--brand);
+}
 
-  /* ---------- expertise ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-  }
+/* contact */
+.contact-grid{display:flex;gap:11px;flex-wrap:wrap;margin-top:6px}
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 18px 20px;
-  }
-
-  .card h3 {
-    font-size: 0.95rem;
-    font-weight: 650;
-    margin-bottom: 7px;
-  }
-
-  .card p {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-
-  /* ---------- experience ---------- */
-  .job-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 4px;
-  }
-
-  .job-title { font-weight: 650; font-size: 1.02rem; }
-
-  .job-date {
-    color: var(--muted);
-    font-size: 0.88rem;
-    white-space: nowrap;
-  }
-
-  .job-co {
-    color: var(--accent);
-    font-size: 0.94rem;
-    margin-bottom: 14px;
-  }
-
-  ul { list-style: none; }
-
-  li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 9px;
-    font-size: 0.95rem;
-  }
-
-  li::before {
-    content: "";
-    position: absolute;
-    left: 3px;
-    top: 10px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: 0.65;
-  }
-
-  /* ---------- stack ---------- */
-  .stack-row {
-    display: flex;
-    gap: 14px;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.94rem;
-    flex-wrap: wrap;
-  }
-
-  .stack-row:last-child { border-bottom: none; }
-
-  .stack-label {
-    min-width: 118px;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  /* ---------- contact ---------- */
-  .links {
-    display: flex;
-    gap: 26px;
-    flex-wrap: wrap;
-    font-size: 0.96rem;
-  }
-
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  footer {
-    padding: 32px 0 60px;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: 560px) {
-    header { padding: 48px 0 34px; }
-    h1 { font-size: 1.7rem; }
-    section { padding: 34px 0; }
-    .stack-label { min-width: 100%; }
-    .stack-row { gap: 4px; }
-  }
+/* footer */
+footer{background:var(--ink);color:var(--bg);padding:32px 0 38px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem}
+.foot a{color:var(--bg);text-decoration:none;opacity:.82}
+.foot a:hover{opacity:1;color:var(--brand)}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-note{opacity:.45;font-size:.75rem;margin-top:16px}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-
-  <header>
-    <h1>Palraj S</h1>
-    <div class="role">Magento 2 / Adobe Commerce Developer</div>
-    <div class="meta">
-      <span>7+ years experience</span>
-      <span>Madurai, India</span>
-    </div>
-  </header>
-
-  <section>
-    <h2>About</h2>
-    <p>
-      Magento 2 / Adobe Commerce developer with 7+ years of experience building
-      and maintaining ecommerce stores for international clients.
-    </p>
-    <p>
-      My core work is custom module development, third-party system integrations,
-      multi-store and multi-language setups, and performance optimization for
-      large catalogs. I have worked with overseas clients throughout my career
-      and am comfortable working independently with clear, regular communication.
-    </p>
-  </section>
-
-  <section>
-    <h2>Expertise</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>Custom Module Development</h3>
-        <p>Building Magento 2 modules and extensions to client requirements —
-           plugins, observers, service contracts, and admin UI components.</p>
-      </div>
-
-      <div class="card">
-        <h3>Third-Party Integrations</h3>
-        <p>Connecting Magento to payment gateways, ERP systems, shipping
-           providers, and CRM platforms via REST and GraphQL APIs.</p>
-      </div>
-
-      <div class="card">
-        <h3>Performance Optimization</h3>
-        <p>Diagnosing and fixing slow stores — caching strategy, indexer
-           configuration, and database query tuning for large catalogs.</p>
-      </div>
-
-      <div class="card">
-        <h3>Multi-Store Architecture</h3>
-        <p>Multi-store, multi-website and multi-language configurations with
-           scope-aware settings and content management.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>Experience</h2>
-
-    <div class="job-head">
-      <div class="job-title">Senior Web Developer</div>
-      <div class="job-date">Jun 2019 – Present</div>
-    </div>
-    <div class="job-co">Blaze Web Services Pvt Ltd · Madurai, India</div>
-
-    <ul>
-      <li>Magento 2 / Adobe Commerce development for retail clients across the
-          US and Europe</li>
-      <li>Built custom modules for promotions, product management, and
-          inventory features</li>
-      <li>Integrated payment gateways, shipping services, ERP and CRM systems</li>
-      <li>Delivered multi-store and multi-language store configurations</li>
-      <li>Optimized store performance through caching, indexing, and database
-          query tuning</li>
-      <li>Customized checkout and navigation flows to improve conversion</li>
-      <li>Worked directly with overseas clients on requirements and delivery</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Technical Stack</h2>
-
-    <div class="stack-row">
-      <span class="stack-label">Platform</span>
-      <span>Magento 2, Adobe Commerce</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Languages</span>
-      <span>PHP, JavaScript, HTML, CSS, XML</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Magento</span>
-      <span>Custom Modules, Plugins, Observers, UI Components, Layout XML,
-            Knockout.js, RequireJS</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">APIs</span>
-      <span>REST, GraphQL, Payment &amp; ERP Integrations</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Database</span>
-      <span>MySQL, Query Optimization</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Infrastructure</span>
-      <span>Redis, Elasticsearch, Nginx, Apache, Docker, Linux</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Tools</span>
-      <span>Git, Composer</span>
-    </div>
-    <div class="stack-row">
-      <span class="stack-label">Also</span>
-      <span>Shopify, WordPress</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <div class="job-head">
-      <div class="job-title">B.E. Computer Science &amp; Engineering</div>
-      <div class="job-date">2015 – 2019</div>
-    </div>
-    <div class="job-co">Mangayarkarasi College of Engineering · Madurai</div>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <div class="links">
-      <a href="mailto:rajapjimdu@gmail.com">rajapjimdu@gmail.com</a>
-      <a href="https://www.linkedin.com/in/palraj-s-93b23b16b/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/palrajsiva" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <p style="margin-top:16px; color:var(--muted); font-size:0.92rem;">
-      Languages: English, Tamil
-    </p>
-  </section>
-
-  <footer>
-    © 2026 Palraj S
-  </footer>
-
+<div class="topbar">
+  <div class="wrap">
+    <div>Magento 2 / Adobe Commerce · <span class="yrs">7</span> years</div>
+    <div>Madurai, India · UTC+5:30</div>
+  </div>
 </div>
+
+<div class="store-head">
+  <div class="wrap">
+    <div class="logo"><i>P</i> Palraj S</div>
+    <nav class="head-links">
+      <a href="#overview">Overview</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#specs">Specifications</a>
+      <a href="#history">Work History</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="crumb">
+  <div class="wrap">
+    Home <span>/</span> Developers <span>/</span> Ecommerce <span>/</span>
+    Magento 2 <span>/</span> <b>Palraj S</b>
+  </div>
+</div>
+
+<!-- ══ PRODUCT HEADER ══ -->
+<div class="pdp">
+  <div class="wrap pdp-grid">
+
+    <div class="gallery">
+      <span class="badge">Senior</span>
+      <img src="palraj.jpg" alt="Palraj S — Magento 2 developer" width="440" height="440">
+      <div class="thumbs">
+        <div class="thumb sel">MAGENTO<br>2</div>
+        <div class="thumb">ADOBE<br>COMMERCE</div>
+        <div class="thumb">PHP<br>MYSQL</div>
+        <div class="thumb">SHOPIFY<br>WORDPRESS</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sku">SKU: MAGE-DEV-PALRAJ-2019</div>
+      <h1>Palraj S</h1>
+      <div class="subtitle">Senior Web Developer — Magento 2 / Adobe Commerce</div>
+
+      <div class="price-box">
+        <div class="price"><span class="yrs">7</span>+ <small>years experience</small></div>
+        <div class="price-note">Magento 2 since June 2019 · International clients · Madurai, India</div>
+      </div>
+
+      <ul class="attrs">
+        <li>Custom module and extension development</li>
+        <li>Payment, shipping and CRM integrations via REST</li>
+        <li>Performance tuning on large catalogs</li>
+        <li>Multi-store, multi-website and multi-language setups</li>
+        <li>Direct communication with overseas clients</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-add" href="mailto:rajapjimdu@gmail.com">Get in Touch →</a>
+        <a class="btn btn-out" href="https://www.linkedin.com/in/palraj-s-93b23b16b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-out" href="https://github.com/palrajsiva" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ OVERVIEW ══ -->
+<section id="overview">
+  <div class="wrap">
+    <div class="sec-title">Overview</div>
+    <h2>Web developer, <span class="yrs">7</span> years in Magento</h2>
+    <div class="lead">
+      <p>
+        I build and maintain online stores for international clients — custom
+        modules, theme development, third-party integrations, multi-store
+        architecture, and making large catalogs run fast.
+      </p>
+      <p>
+        Alongside Magento I have delivered Shopify and WordPress projects: theme
+        development and customization, plugin and app integrations, and
+        responsive, SEO-friendly frontends.
+      </p>
+      <p>
+        I have worked with overseas clients throughout my career, so I am used to
+        remote collaboration, clear written updates, and carrying a requirement
+        through to delivery without close supervision.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAPABILITIES ══ -->
+<section id="capabilities">
+  <div class="wrap">
+    <div class="sec-title">Capabilities</div>
+    <h2>What I work on</h2>
+    <div class="feat">
+      <div>
+        <h3>Custom Module Development</h3>
+        <p>Modules and extensions built to requirement — plugins, observers,
+           service contracts, admin UI components.</p>
+      </div>
+      <div>
+        <h3>Third-Party Integrations</h3>
+        <p>Payment gateways, shipping providers and CRM platforms connected
+           through REST APIs.</p>
+      </div>
+      <div>
+        <h3>Performance Optimization</h3>
+        <p>Caching strategy, indexer configuration and database query tuning
+           on large catalogs.</p>
+      </div>
+      <div>
+        <h3>Multi-Store Architecture</h3>
+        <p>Multi-website, multi-store and multi-language setups with
+           scope-aware configuration.</p>
+      </div>
+      <div>
+        <h3>Checkout Customization</h3>
+        <p>Reworking checkout, shipping and payment steps to reduce friction
+           and improve conversion.</p>
+      </div>
+      <div>
+        <h3>Catalog &amp; Inventory</h3>
+        <p>Product management, attribute structures and inventory features
+           across multiple stores.</p>
+      </div>
+      <div>
+        <h3>Theme &amp; Frontend Work</h3>
+        <p>Magento theme development and customization, responsive
+           mobile-friendly storefronts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPECIFICATIONS ══ -->
+<section id="specs">
+  <div class="wrap">
+    <div class="sec-title">Specifications</div>
+    <h2>Technical stack</h2>
+    <table>
+      <tr><th>Platform</th><td>Magento 2, Adobe Commerce</td></tr>
+      <tr><th>Languages</th><td>PHP, JavaScript, HTML5, CSS3, XML</td></tr>
+      <tr><th>Magento</th><td>Custom Modules, Theme Development, Plugins, Observers, UI Components, Layout XML, Knockout.js, RequireJS</td></tr>
+      <tr><th>Frontend</th><td>Responsive Storefronts, Mobile-First Layouts, Checkout &amp; Navigation UI</td></tr>
+      <tr><th>APIs</th><td>REST APIs, Payment Gateways, Shipping APIs, CRM Integration</td></tr>
+      <tr><th>Database</th><td>MySQL, Query Optimization</td></tr>
+      <tr><th>Environment</th><td>Docker, Linux, Apache</td></tr>
+      <tr><th>Tools</th><td>Git, Composer</td></tr>
+      <tr><th>Shopify</th><td>Theme Development, Template Customization, App Integrations</td></tr>
+      <tr><th>WordPress</th><td>Custom Themes, Plugin Integration, SEO-Friendly Builds</td></tr>
+      <tr><th>Education</th><td>B.E. Computer Science &amp; Engineering — Mangayarkarasi College of Engineering, 2015–2019</td></tr>
+      <tr><th>Languages Spoken</th><td>English, Tamil</td></tr>
+      <tr><th>Location</th><td>Madurai, Tamil Nadu, India (UTC+5:30)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══ WORK HISTORY ══ -->
+<section id="history">
+  <div class="wrap">
+    <div class="sec-title">Work History</div>
+    <h2>Experience</h2>
+    <div class="hist">
+      <div class="hist-head">
+        <div class="hist-title">Senior Web Developer</div>
+        <div class="hist-date">JUN 2019 — PRESENT</div>
+      </div>
+      <div class="hist-co">Blaze Web Services Pvt Ltd · Madurai, India</div>
+      <ol>
+        <li>Magento 2 / Adobe Commerce development for international retail clients</li>
+        <li>Built custom modules for promotions, product management and inventory features</li>
+        <li>Integrated payment gateways, shipping services and CRM systems</li>
+        <li>Delivered multi-store and multi-language store configurations</li>
+        <li>Optimized store performance through caching, indexing and database query tuning</li>
+        <li>Customized checkout and navigation flows to improve conversion</li>
+        <li>Delivered Shopify and WordPress projects — themes, plugin and app integrations, responsive frontends</li>
+        <li>Worked directly with overseas clients on requirements and delivery</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-title">Contact</div>
+    <h2>Get in touch</h2>
+    <p class="lead" style="margin-bottom:18px">
+      Magento 2 and Adobe Commerce work — new builds, maintenance,
+      integrations or performance improvement.
+    </p>
+    <div class="contact-grid">
+      <a class="btn btn-add" style="flex:0 1 auto" href="mailto:rajapjimdu@gmail.com">rajapjimdu@gmail.com</a>
+      <a class="btn btn-out" href="https://www.linkedin.com/in/palraj-s-93b23b16b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-out" href="https://github.com/palrajsiva" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><strong>Palraj S</strong> — Magento 2 / Adobe Commerce Developer</div>
+      <div class="foot-links">
+        <a href="mailto:rajapjimdu@gmail.com">rajapjimdu@gmail.com</a>
+        <a href="https://www.linkedin.com/in/palraj-s-93b23b16b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/palrajsiva" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      Built as a product page, because that is what I build. Hand-coded, no framework.
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Years of experience — counted from June 2019, updates itself forever.
+   Never edit the number by hand again. */
+(function(){
+  var START_YEAR = 2019, START_MONTH = 5; /* 5 = June (0-indexed) */
+  var now = new Date();
+  var years = now.getFullYear() - START_YEAR;
+  if (now.getMonth() < START_MONTH) years--;
+  if (years < 1) years = 1;
+  var nodes = document.querySelectorAll('.yrs');
+  for (var i = 0; i < nodes.length; i++) nodes[i].textContent = years;
+})();
+</script>
 
 </body>
 </html>
